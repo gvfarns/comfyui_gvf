@@ -77,8 +77,8 @@ class CropToAspectRatio:
         return (images, w, h)
 
 
-class IfElseValues:
-    """Return the first value if true, otherwise the second"""
+class IfElseFloat:
+    """Return the first float if true, otherwise the second"""
     @classmethod
     def INPUT_TYPES(cls):
         return {"required": {"if_true": ("FLOAT", {"default": 1.0}),
@@ -87,21 +87,40 @@ class IfElseValues:
                              }}
     RETURN_TYPES = ("FLOAT",)
     RETURN_NAMES = ("value",)
-    FUNCTION = "if_else_values"
+    FUNCTION = "if_else_float"
     CATEGORY = "gvf"
 
-    def if_else_values(self, if_true, if_false, condition):
+    def if_else_float(self, if_true, if_false, condition):
+        return (if_true if condition else if_false,)
+
+
+class IfElseInt:
+    """Return the first int if true, otherwise the second"""
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {"required": {"if_true": ("INT", {"default": 1}),
+                "if_false": ("INT", {"default": 0}),
+                "condition": ("BOOL", {"default": False}),
+                             }}
+    RETURN_TYPES = ("INT",)
+    RETURN_NAMES = ("value",)
+    FUNCTION = "if_else_int"
+    CATEGORY = "gvf"
+
+    def if_else_int(self, if_true, if_false, condition):
         return (if_true if condition else if_false,)
 
 
 NODE_CLASS_MAPPINGS = {
     "CropToAspectRatioMinMax": CropToAspectRatioMinMax,
     "CropToAspectRatio": CropToAspectRatio,
-    "IfElseValues": IfElseValues,
+    "IfElseFloat": IfElseFloat,
+    "IfElseInt": IfElseInt,
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
     "CropToAspectRatioMinMax": "Crop Image to Min/Max Aspect Ratio",
     "CropToAspectRatio": "Crop Image to Aspect Ratio",
-    "IfElseValues": "If else with two float values",
+    "IfElseFloat": "If else with two float values",
+    "IfElseInt": "If else with two int values",
 }
