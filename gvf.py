@@ -83,7 +83,7 @@ class IfElseFloat:
     def INPUT_TYPES(cls):
         return {"required": {"if_true": ("FLOAT", {"default": 1.0}),
                 "if_false": ("FLOAT", {"default": 0.0}),
-                "boolean": ("BOOL", {"default": False}),
+                "boolean": ("BOOLEAN", {"default": False}),
                              }}
     RETURN_TYPES = ("FLOAT",)
     RETURN_NAMES = ("value",)
@@ -100,7 +100,7 @@ class IfElseInt:
     def INPUT_TYPES(cls):
         return {"required": {"if_true": ("INT", {"default": 1}),
                 "if_false": ("INT", {"default": 0}),
-                "boolean": ("BOOL", {"default": False}),
+                "boolean": ("BOOLEAN", {"default": False}),
                              }}
     RETURN_TYPES = ("INT",)
     RETURN_NAMES = ("value",)
