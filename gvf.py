@@ -1,5 +1,5 @@
-import sys
 import os
+import sys
 
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.realpath(__file__)), "comfy"))
 import comfy.sd
@@ -129,6 +129,7 @@ class CheckpointLoaderWithName:
             },
         }
     RETURN_TYPES = ("MODEL", "CLIP", "VAE", "STRING")
+    RETURN_NAMES = ("MODEL", "CLIP", "VAE", "checkpoint name")
     OUTPUT_TOOLTIPS = ("The model used for denoising latents.",
                        "The CLIP model used for encoding text prompts.",
                        "The VAE model used for encoding and decoding images to and from latent space.",
@@ -143,27 +144,6 @@ class CheckpointLoaderWithName:
         ckpt_path = folder_paths.get_full_path_or_raise("checkpoints", ckpt_name)
         out = comfy.sd.load_checkpoint_guess_config(ckpt_path, output_vae=True, output_clip=True, embedding_directory=folder_paths.get_folder_paths("embeddings"))
         return *out[:3], ckpt_name
-
-
-# class StringContains:
-#     """Returns True if the substring is in the main string."""
-
-#     @classmethod
-#     def INPUT_TYPES(cls):
-#         return {
-#             "required": {
-#                 "string": ("STRING", {"multiline": True}),
-#                 "substring": ("STRING", {"multiline": False}),
-#             },
-#         }
-
-#     RETURN_TYPES = ("BOOLEAN",)
-#     RETURN_NAMES = ("result",)
-#     FUNCTION = "check_contains"
-#     CATEGORY = "utils"
-
-#     def check_contains(self, string, substring):
-#         return (substring in string,)
 
 
 NODE_CLASS_MAPPINGS = {
