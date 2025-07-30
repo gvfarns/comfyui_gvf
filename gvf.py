@@ -81,8 +81,8 @@ class IfElseValues:
     """Return the first value if true, otherwise the second"""
     @classmethod
     def INPUT_TYPES(cls):
-        return {"required": {"if_true": ("FLOAT", {"default": 1.0, "min": 0.1, "max": 10.0, "step": 0.01}),
-                "if_false": ("FLOAT", {"default": 0.0, "min": 0.1, "max": 10.0, "step": 0.01}),
+        return {"required": {"if_true": ("FLOAT", {"default": 1.0}),
+                "if_false": ("FLOAT", {"default": 0.0}),
                 "condition": ("BOOL", {"default": False}),
                              }}
     RETURN_TYPES = ("FLOAT",)
