@@ -1,7 +1,8 @@
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.realpath(__file__)), "comfy"))
-import folder_paths
-import comfy.sd
 import sys
+
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.realpath(__file__)), "comfy"))
+import comfy.sd
+import folder_paths
 
 
 class CropToAspectRatioMinMax:
