@@ -1,3 +1,6 @@
+import folder_paths
+
+
 class CropToAspectRatioMinMax:
     """Crops an image to a max and min aspect ratio, only if such is needed"""
     @classmethod
@@ -111,11 +114,38 @@ class IfElseInt:
         return (if_true if boolean else if_false,)
 
 
+class CheckpointLoaderWithName:
+    """Load checkpoint but also return the checkpoint name"""
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": {
+                "ckpt_name": (folder_paths.get_filename_list("checkpoints"), {"tooltip": "The name of the checkpoint (model) to load."}),
+            },
+        }
+    RETURN_TYPES = ("MODEL", "CLIP", "VAE", "STRING")
+    OUTPUT_TOOLTIPS = ("The model used for denoising latents.",
+                       "The CLIP model used for encoding text prompts.",
+                       "The VAE model used for encoding and decoding images to and from latent space.",
+                       "Name of the model, as a string",
+                       )
+    FUNCTION = "load_checkpoint_with_name"
+
+    CATEGORY = "loaders"
+    DESCRIPTION = "Loads a diffusion model checkpoint, diffusion models are used to denoise latents."
+
+    def load_checkpoint_with_name(self, ckpt_name):
+        ckpt_path = folder_paths.get_full_path_or_raise("checkpoints", ckpt_name)
+        out = comfy.sd.load_checkpoint_guess_config(ckpt_path, output_vae=True, output_clip=True, embedding_directory=folder_paths.get_folder_paths("embeddings"))
+        return *out[:3], ckpt_name
+
+
 NODE_CLASS_MAPPINGS = {
     "CropToAspectRatioMinMax": CropToAspectRatioMinMax,
     "CropToAspectRatio": CropToAspectRatio,
     "IfElseFloat": IfElseFloat,
     "IfElseInt": IfElseInt,
+    "CheckpointLoaderWithName": CheckpointLoaderWithName,
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
@@ -123,4 +153,5 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "CropToAspectRatio": "Crop Image to Aspect Ratio",
     "IfElseFloat": "If else with two float values",
     "IfElseInt": "If else with two int values",
+    "CheckpointLoaderWithName": "Load checkpoint and provide its name as a string",
 }
