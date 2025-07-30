@@ -1,4 +1,6 @@
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.realpath(__file__)), "comfy"))
 import folder_paths
+import comfy.sd
 
 
 class CropToAspectRatioMinMax:
@@ -140,25 +142,25 @@ class CheckpointLoaderWithName:
         return *out[:3], ckpt_name
 
 
-class StringContains:
-    """Returns True if the substring is in the main string."""
+# class StringContains:
+#     """Returns True if the substring is in the main string."""
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {
-            "required": {
-                "string": ("STRING", {"multiline": True}),
-                "substring": ("STRING", {"multiline": False}),
-            },
-        }
+#     @classmethod
+#     def INPUT_TYPES(cls):
+#         return {
+#             "required": {
+#                 "string": ("STRING", {"multiline": True}),
+#                 "substring": ("STRING", {"multiline": False}),
+#             },
+#         }
 
-    RETURN_TYPES = ("BOOLEAN",)
-    RETURN_NAMES = ("result",)
-    FUNCTION = "check_contains"
-    CATEGORY = "utils"
+#     RETURN_TYPES = ("BOOLEAN",)
+#     RETURN_NAMES = ("result",)
+#     FUNCTION = "check_contains"
+#     CATEGORY = "utils"
 
-    def check_contains(self, string, substring):
-        return (substring in string,)
+#     def check_contains(self, string, substring):
+#         return (substring in string,)
 
 
 NODE_CLASS_MAPPINGS = {
@@ -167,7 +169,7 @@ NODE_CLASS_MAPPINGS = {
     "IfElseFloat": IfElseFloat,
     "IfElseInt": IfElseInt,
     "CheckpointLoaderWithName": CheckpointLoaderWithName,
-    "StringContains": StringContains,
+    # "StringContains": StringContains,
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
@@ -176,5 +178,5 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "IfElseFloat": "If else with two float values",
     "IfElseInt": "If else with two int values",
     "CheckpointLoaderWithName": "Load checkpoint and provide its name as a string",
-    "StringContains": "Return if a string has a substring",
+    # "StringContains": "Return if a string has a substring",
 }
