@@ -83,15 +83,15 @@ class IfElseFloat:
     def INPUT_TYPES(cls):
         return {"required": {"if_true": ("FLOAT", {"default": 1.0}),
                 "if_false": ("FLOAT", {"default": 0.0}),
-                "condition": ("BOOL", {"default": False}),
+                "boolean": ("BOOL", {"default": False}),
                              }}
     RETURN_TYPES = ("FLOAT",)
     RETURN_NAMES = ("value",)
     FUNCTION = "if_else_float"
     CATEGORY = "gvf"
 
-    def if_else_float(self, if_true, if_false, condition):
-        return (if_true if condition else if_false,)
+    def if_else_float(self, if_true, if_false, boolean):
+        return (if_true if boolean else if_false,)
 
 
 class IfElseInt:
@@ -100,15 +100,15 @@ class IfElseInt:
     def INPUT_TYPES(cls):
         return {"required": {"if_true": ("INT", {"default": 1}),
                 "if_false": ("INT", {"default": 0}),
-                "condition": ("BOOL", {"default": False}),
+                "boolean": ("BOOL", {"default": False}),
                              }}
     RETURN_TYPES = ("INT",)
     RETURN_NAMES = ("value",)
     FUNCTION = "if_else_int"
     CATEGORY = "gvf"
 
-    def if_else_int(self, if_true, if_false, condition):
-        return (if_true if condition else if_false,)
+    def if_else_int(self, if_true, if_false, boolean):
+        return (if_true if boolean else if_false,)
 
 
 NODE_CLASS_MAPPINGS = {
