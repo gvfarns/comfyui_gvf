@@ -1,6 +1,6 @@
 [project]
 name = "comfyui_gvf"
-description = "ComfyUI custom nodes to crop an image."
+description = "ComfyUI custom convenience nodes."
 version = "0.0.1"
 license = { text = "GNU General Public License v3.0" }
 dependencies = []

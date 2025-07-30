@@ -97,9 +97,11 @@ class IfElseValues:
 NODE_CLASS_MAPPINGS = {
     "CropToAspectRatioMinMax": CropToAspectRatioMinMax,
     "CropToAspectRatio": CropToAspectRatio,
+    "IfElseValues": IfElseValues,
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
     "CropToAspectRatioMinMax": "Crop Image to Min/Max Aspect Ratio",
     "CropToAspectRatio": "Crop Image to Aspect Ratio",
+    "IfElseValues": "If else with two float values",
 }
