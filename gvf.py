@@ -117,7 +117,7 @@ class SizeFromAspect:
     def size_from_aspect(self, short_length, aspect):
         if aspect > 1.0:
             return (short_length, int(short_length * aspect))
-        return (int(short_length * aspect), short_length)
+        return (int(short_length / aspect), short_length)
 
 
 class IfElseInt:
