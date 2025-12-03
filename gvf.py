@@ -119,6 +119,7 @@ class SizeFromAspect:
             return (short_length, int(short_length * aspect))
         return (int(short_length * aspect), short_length)
 
+
 class IfElseInt:
     """Return the first int if true, otherwise the second"""
     @classmethod
@@ -167,6 +168,7 @@ NODE_CLASS_MAPPINGS = {
     "CropToAspectRatioMinMax": CropToAspectRatioMinMax,
     "CropToAspectRatio": CropToAspectRatio,
     "IfElseFloat": IfElseFloat,
+    "SizeFromAspect": SizeFromAspect,
     "IfElseInt": IfElseInt,
     "CheckpointLoaderWithName": CheckpointLoaderWithName,
     # "StringContains": StringContains,
@@ -177,6 +179,7 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "CropToAspectRatio": "Crop Image to Aspect Ratio",
     "IfElseFloat": "If else with two float values",
     "IfElseInt": "If else with two int values",
+    "SizeFromAspect": "Generate height and width from and aspect ratio and short length",
     "CheckpointLoaderWithName": "Load checkpoint and provide its name as a string",
     # "StringContains": "Return if a string has a substring",
 }
