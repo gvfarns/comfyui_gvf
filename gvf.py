@@ -179,7 +179,7 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "CropToAspectRatio": "Crop Image to Aspect Ratio",
     "IfElseFloat": "If else with two float values",
     "IfElseInt": "If else with two int values",
-    "SizeFromAspect": "Generate height and width from and aspect ratio and short length",
+    "SizeFromAspect": "Image size from aspect ratio",
     "CheckpointLoaderWithName": "Load checkpoint and provide its name as a string",
     # "StringContains": "Return if a string has a substring",
 }
