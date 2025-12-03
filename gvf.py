@@ -102,6 +102,23 @@ class IfElseFloat:
         return (if_true if boolean else if_false,)
 
 
+class SizeFromAspect:
+    """For a given length of the short side and aspect ratio, produce height and width"""
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {"required": {
+                  "short_length": ("INT", {"default": 1024, "min": 256, "max": 4080, "step": 1}),
+                  "aspect": ("FLOAT", {"default": 1.0, "min": 0.1, "max": 10.0, "step": 0.01})}}
+    RETURN_TYPES = ("INT", "INT")
+    RETURN_NAMES = ("Width", "Height")
+    FUNCTION = "size_from_aspect"
+    CATEGORY = "gvf"
+
+    def size_from_aspect(self, short_length, aspect):
+        if aspect > 1.0:
+            return (short_length, int(short_length * aspect))
+        return (int(short_length * aspect), short_length)
+
 class IfElseInt:
     """Return the first int if true, otherwise the second"""
     @classmethod
